@@ -484,10 +484,12 @@ function VirtualJoystick({ onMove }: { onMove: (x: number, y: number) => void })
 export default function VirtualGallery() {
   const [currentRoom, setCurrentRoom] = useState<number>(0);
   const [selectedArt, setSelectedArt] = useState<Artwork | null>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const analogInput = useRef({ x: 0, y: 0 });
 
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const activeRoom = rooms[currentRoom];
 
   const toggleAudio = () => {
     if (!audioRef.current) return;
@@ -499,7 +501,17 @@ export default function VirtualGallery() {
     }
   };
 
-  const activeRoom = rooms[currentRoom];
+  const handleEnterGallery = () => {
+    setCurrentRoom(1);
+    if (audioRef.current && !isPlaying) {
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  };
+
+  const handleSelectRoom = (index: number) => {
+    setCurrentRoom(index);
+    setIsSidebarOpen(false);
+  };
 
   const handleJoystickMove = (x: number, y: number) => {
     analogInput.current = { x, y };
@@ -508,6 +520,16 @@ export default function VirtualGallery() {
   return (
     <main className={styles.mainContainer}>
       <audio ref={audioRef} src="/audio/bgm.mp3" loop preload="auto" />
+
+      {/* Tombol Hamburger Menu Mobile */}
+      <button
+        className={styles.menuMobileBtn}
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      >
+        {isSidebarOpen ? "✕" : "☰"}
+      </button>
+
+      {/* Tombol Kontrol Musik */}
       <button
         className={`${styles.musicToggleBtn} ${isPlaying ? styles.musicPlaying : ""}`}
         onClick={toggleAudio}
@@ -516,14 +538,15 @@ export default function VirtualGallery() {
         <span className={styles.musicLabel}>{isPlaying ? "Musik: On" : "Musik: Off"}</span>
       </button>
 
-      <nav className={styles.sidebar}>
+      {/* Sidebar Navigasi Responsif */}
+      <nav className={`${styles.sidebar} ${isSidebarOpen ? styles.sidebarOpen : ""}`}>
         <h2 className={styles.logo}>ARTSPACE</h2>
         <div className={styles.menu}>
           {rooms.map((room, index) => (
             <button
               key={room.id}
               className={`${styles.navButton} ${currentRoom === index ? styles.active : ""}`}
-              onClick={() => setCurrentRoom(index)}
+              onClick={() => handleSelectRoom(index)}
             >
               {room.title}
             </button>
@@ -531,6 +554,7 @@ export default function VirtualGallery() {
         </div>
       </nav>
 
+      {/* Tampilan Galeri */}
       <section className={styles.galleryView}>
         <header className={styles.roomHeader}>
           <h1 className={styles.roomTitle}>{activeRoom.title}</h1>
@@ -567,15 +591,7 @@ export default function VirtualGallery() {
 
                 <p className={styles.artisticAuthor}>— Virtual Gallery Fauzan</p>
 
-                <button
-                  className={styles.enterGalleryBtn}
-                  onClick={() => {
-                    setCurrentRoom(1);
-                    if (audioRef.current && !isPlaying) {
-                      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
-                    }
-                  }}
-                >
+                <button className={styles.enterGalleryBtn} onClick={handleEnterGallery}>
                   <span>Masuki Ruang Pameran</span>
                   <span className={styles.btnArrow}>→</span>
                 </button>
@@ -603,6 +619,7 @@ export default function VirtualGallery() {
         )}
       </section>
 
+      {/* Modal Detail Pop-up */}
       {selectedArt && (
         <div className={styles.modalOverlay} onClick={() => setSelectedArt(null)}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
@@ -614,7 +631,7 @@ export default function VirtualGallery() {
                 src={selectedArt.image}
                 alt={selectedArt.title}
                 fill
-                sizes="500px"
+                sizes="(max-width: 768px) 100vw, 500px"
                 className={styles.modalImage}
               />
             </div>
