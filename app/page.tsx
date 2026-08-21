@@ -47,8 +47,8 @@ const rooms: Room[] = [
     id: 3,
     title: "Ruangan Lukisan",
     artworks: [
-      { id: "3-1", title: "Lolongan Jiwa di Tapal Kesunyian", year: "2022", desc: "Siluet serigala yang melolong pada purnama melambangkan jeritan eksistensial makhluk fana menuju keabadian semesta yang hening. Bayang gelapnya menegaskan keteguhan nurani yang tetap berdiri kokoh menatap hampa di puncak malam", image: "/artworks/room3-1.png" },
-      { id: "3-2", title: "Penjaga Sunyi di Puncak Abadi", year: "2021", desc: "Sorot mata tajam bermahkotakan bulan sabit memancarkan harmoni purba antara kebuasan naluri dan kebijaksanaan kosmis. Langkahnya di atas pegunungan beku menjadi metafora perjalanan batin yang menolak tunduk pada kerasnya takdir", image: "/artworks/room3-2.png" },
+      { id: "3-1", title: "Penjaga Sunyi di Puncak Abadi", year: "2022", desc: "Sorot mata tajam bermahkotakan bulan sabit memancarkan harmoni purba antara kebuasan naluri dan kebijaksanaan kosmis. Langkahnya di atas pegunungan beku menjadi metafora perjalanan batin yang menolak tunduk pada kerasnya takdir", image: "/artworks/room3-2.png" },
+      { id: "3-2", title: "Lolongan Jiwa di Tapal Kesunyian", year: "2021", desc: "Siluet serigala yang melolong pada purnama melambangkan jeritan eksistensial makhluk fana menuju keabadian semesta yang hening. Bayang gelapnya menegaskan keteguhan nurani yang tetap berdiri kokoh menatap hampa di puncak malam", image: "/artworks/room3-1.png" },
       { id: "3-3", title: "Sauh Sunyi di Lautan Hening", year: "2026", desc: "Pendar rembulan yang membelah samudra tenang menggambarkan pencarian dermaga spiritual di tengah pengembaraan hidup yang fana. Siluet perahu menjadi saksi kontemplasi diri yang pasrah namun teguh mengarungi samudra waktu", image: "/artworks/room3-3.jpg" },
     ],
   },
@@ -73,53 +73,127 @@ const rooms: Room[] = [
   },
 ];
 
-// Komponen Partikel 3D Lobby
+// Komponen Partikel & Latar Belakang Aula Museum Minimalis (Sesuai Referensi Gambar)
 function LobbySoulScene() {
-  const meshRef = useRef<THREE.Group>(null!);
+  const crystalRef = useRef<THREE.Group>(null!);
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
-    if (meshRef.current) {
-      meshRef.current.rotation.y = t * 0.15;
-      meshRef.current.rotation.x = Math.sin(t * 0.1) * 0.1;
+    if (crystalRef.current) {
+      crystalRef.current.rotation.y = t * 0.15;
+      crystalRef.current.rotation.x = Math.sin(t * 0.1) * 0.08;
     }
   });
 
   return (
     <>
-      <ambientLight intensity={0.5} />
-      <pointLight position={[-4, 3, 2]} intensity={50} color="#f59e0b" distance={12} />
-      <pointLight position={[4, -3, 2]} intensity={50} color="#3b82f6" distance={12} />
-      <pointLight position={[0, 0, -2]} intensity={30} color="#ec4899" distance={10} />
+      {/* Pencahayaan Lembut & Terang Alami Skylight */}
+      <ambientLight intensity={1.2} color="#ffffff" />
+      <directionalLight position={[0, 10, 0]} intensity={1.5} color="#fffaf0" />
+      <pointLight position={[0, 4, 0]} intensity={40} color="#ffffff" distance={15} />
 
-      <Sparkles count={120} scale={10} size={3} speed={0.4} opacity={0.6} color="#fbbf24" />
-      <Sparkles count={120} scale={12} size={2.5} speed={0.3} opacity={0.5} color="#60a5fa" />
+      {/* Lantai Kayu Parket Hangat */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2.4, 0]}>
+        <planeGeometry args={[26, 26]} />
+        <meshStandardMaterial color="#8b5a3c" roughness={0.35} metalness={0.05} />
+      </mesh>
 
-      <group ref={meshRef}>
-        <Float speed={2} rotationIntensity={1} floatIntensity={1.5}>
+      {/* Plafon Putih Bersih */}
+      <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 5.2, 0]}>
+        <planeGeometry args={[26, 26]} />
+        <meshStandardMaterial color="#f4f4f5" roughness={0.8} />
+      </mesh>
+
+      {/* Skylight Grid Kaca di Plafon */}
+      <group position={[0, 5.15, -1]}>
+        <mesh rotation={[-Math.PI / 2, 0, 0]}>
+          <planeGeometry args={[12, 10]} />
+          <meshBasicMaterial color="#ffffff" />
+        </mesh>
+        <gridHelper args={[12, 10, "#94a3b8", "#cbd5e1"]} position={[0, -0.01, 0]} />
+      </group>
+
+      {/* Dinding Galeri Putih Minimalis */}
+      <mesh position={[0, 1.4, -6.5]}>
+        <planeGeometry args={[26, 7.6]} />
+        <meshStandardMaterial color="#fafaf9" roughness={0.9} />
+      </mesh>
+      <mesh position={[-6.5, 1.4, 0]} rotation={[0, Math.PI / 2, 0]}>
+        <planeGeometry args={[26, 7.6]} />
+        <meshStandardMaterial color="#f5f5f4" roughness={0.9} />
+      </mesh>
+      <mesh position={[6.5, 1.4, 0]} rotation={[0, -Math.PI / 2, 0]}>
+        <planeGeometry args={[26, 7.6]} />
+        <meshStandardMaterial color="#f5f5f4" roughness={0.9} />
+      </mesh>
+
+      {/* Pintu Kayu Minimalis di Dinding Belakang */}
+      <group position={[0, 0.1, -6.45]}>
+        <mesh>
+          <boxGeometry args={[1.8, 3.8, 0.05]} />
+          <meshStandardMaterial color="#d4b996" roughness={0.5} />
+        </mesh>
+        <mesh position={[0, 0, 0.03]}>
+          <boxGeometry args={[0.04, 3.7, 0.02]} />
+          <meshStandardMaterial color="#78716c" />
+        </mesh>
+      </group>
+
+      {/* Bingkai Sketsa Seni Minimalis di Dinding */}
+      {[-4.5, -2.5, 2.5, 4.5].map((x, i) => (
+        <group key={i} position={[x, 1.5, -6.45]}>
           <mesh>
-            <icosahedronGeometry args={[2, 0]} />
+            <boxGeometry args={[1.4, 1.8, 0.04]} />
+            <meshStandardMaterial color="#e7e5e4" roughness={0.3} />
+          </mesh>
+          <mesh position={[0, 0, 0.025]}>
+            <planeGeometry args={[1.25, 1.65]} />
+            <meshBasicMaterial color="#ffffff" />
+          </mesh>
+        </group>
+      ))}
+
+      {/* Sofa Duduk Lengkung Museum di Tengah */}
+      <group position={[0, -1.9, 0.5]}>
+        <mesh rotation={[0, 0, 0]}>
+          <cylinderGeometry args={[2.2, 2.2, 0.45, 32, 1, false, 0, Math.PI * 0.65]} />
+          <meshStandardMaterial color="#a8a29e" roughness={0.8} />
+        </mesh>
+        <mesh rotation={[0, Math.PI * 0.7, 0]}>
+          <cylinderGeometry args={[2.2, 2.2, 0.45, 32, 1, false, 0, Math.PI * 0.65]} />
+          <meshStandardMaterial color="#a8a29e" roughness={0.8} />
+        </mesh>
+      </group>
+
+      {/* Objek Jiwa Berpendar Halus di Atas Sofa */}
+      <group ref={crystalRef} position={[0, 0.4, -1]}>
+        <Float speed={1.5} rotationIntensity={0.6} floatIntensity={0.8}>
+          <mesh>
+            <icosahedronGeometry args={[1.6, 0]} />
             <meshStandardMaterial
               color="#fbbf24"
               wireframe
               emissive="#d97706"
-              emissiveIntensity={0.6}
+              emissiveIntensity={0.45}
             />
           </mesh>
           <mesh scale={0.75}>
-            <octahedronGeometry args={[1.6, 2]} />
+            <octahedronGeometry args={[1.4, 2]} />
             <meshPhysicalMaterial
               color="#1e1b4b"
               roughness={0.1}
-              metalness={0.8}
+              metalness={0.7}
               transmission={0.6}
-              thickness={1.2}
+              thickness={1.1}
               emissive="#1d4ed8"
               emissiveIntensity={0.4}
             />
           </mesh>
         </Float>
       </group>
+
+      <Sparkles count={50} scale={8} size={2} speed={0.3} opacity={0.4} color="#fbbf24" />
+      <Sparkles count={50} scale={8} size={2} speed={0.3} opacity={0.4} color="#60a5fa" />
     </>
   );
 }
@@ -589,7 +663,7 @@ export default function VirtualGallery() {
                   &ldquo;Di antara gemerlap tawa yang membuncah dan sunyinya air mata yang mengering, setiap goresan adalah rekaman atas jiwa yang terus bernyawa.&rdquo;
                 </p>
 
-                <p className={styles.artisticAuthor}>— Virtual Gallery Fauzan</p>
+                <p className={styles.artisticAuthor}>Virtual Gallery Fauzan</p>
 
                 <button className={styles.enterGalleryBtn} onClick={handleEnterGallery}>
                   <span>Masuki Ruang Pameran</span>
