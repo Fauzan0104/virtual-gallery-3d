@@ -25,22 +25,21 @@ const rooms: Room[] = [
   { id: 0, title: "Lobby Utama", artworks: [] },
   {
     id: 1,
-    title: "Ruangan Foto x Digital Art",
+    title: "Ruangan persembahan Karya Terbaik",
     artworks: [
-      { id: "1-1", title: "Metamorfosis Realitas Ruang Jiwa", year: "2026", desc: "Dekonstruksi realitas urban yang monoton melalui intervensi imajinasi surealis, mengubah ruang publik yang kaku menjadi panggung absurditas yang membebaskan", image: "/artworks/room1-1.jpg" },
-      { id: "1-2", title: "Kepolosan Masa Fana", year: "2022", desc: "Simbolisasi perjalanan eksistensi manusia yang fana, di mana kepolosan masa kecil dijadikan kompas navigasi melintasi lanskap kedewasaan yang datar", image: "/artworks/room1-2.png" },
-      { id: "1-3", title: "Ratap Malam Meniti Pijar Harap", year: "2022", desc: "Bunga Violet menandakan meditasi visual tentang harapan (hope) di tengah malam metafisik, mempertemukan kefanaan alam materiil dengan kerinduan abadi pada cahaya ilahi", image: "/artworks/room1-3.png" },
-      { id: "1-4", title: "Lembayung Samudra Niskala", year: "2022", desc: "Perwujudan puitika mimpi (oneiric poetics), mengaburkan batas antara kedalaman samudra batin dan cakrawala senja untuk menyentuh sublime spiritual", image: "/artworks/room1-4.png" },
+      { id: "5-1", title: "Oline Manuel", year: "Forever", desc: "Karena aku mencintaimu dan hatiku hanya untukmu, Tak akan menyerah dan takkan berhenti mencintaimu, Ku berjuang dalam hidupku, Untuk selalu memilikimu, Seumur hidupku, setulus hatiku Hanya untukmu", image: "/artworks/room5-1.jpg" },
+      { id: "5-2", title: "Harusnya", year: "padakno", desc: "Apakah ada kemungkinan dia sadar dok?", image: "/artworks/room5-2.jpg" },
     ],
   },
   {
     id: 2,
-    title: "Ruangan Tradisional x Digital Art",
+    title: "Ruangan Digital Art",
     artworks: [
-      { id: "2-1", title: "Bara Ego di Kedalaman Hampa", year: "2021", desc: "Estetika kehampaan eksistensial Izana, di mana sketsa monokrom melambangkan isolasi dingin dari realitasnya yang terluka. Pendar neon pada mata dan anting-anting menjadi manifestasi will to power, menegaskan bara ambisi seorang raja yang menolak padam di tengah kegelapan takdirnya", image: "/artworks/room2-1.png" },
-      { id: "2-2", title: "Mekar Menantang Sunyi Monokrom", year: "2026", desc: "Eksplorasi esensi mentah dari alam (mimesis organik), membuktikan bahwa kekuatan artistik sejati lahir dari tarikan garis sederhana yang menangkap ritme pertumbuhan hidup", image: "/artworks/room2-2.jpg" },
-      { id: "2-3", title: "Pendar Lirih Sang Jiwa", year: "2025", desc: "Elegi visual tentang kerapuhan dan keanggunan, menampilkan pendar lembut pada kelopak sebagai metafora jiwa yang tetap memancarkan cinta di tengah kesunyian eksistensial", image: "/artworks/room2-3.jpg" },
-      { id: "2-4", title: "Obsesi Sang Iblis", year: "2022", desc: "Enam mata yang menatap nanar merangkum ironi keputusasaan abadi demi mengejar puncak kesempurnaan yang semu. Sorotnya mencerminkan keterbelengguan jiwa dalam rasa iri dan harga diri, menjadikannya monumen keabadian yang sunyi dari kemanusiaan yang hilang", image: "/artworks/room2-4.png" },
+       { id: "4-1", title: "Menari di Antara Sunyi Semesta", year: "2024", desc: "Manifestasi pemberontakan eksistensial, di mana batas gravitasi dan realitas kosmik diterobos melalui kebebasan bermain (homo ludens) di tengah kehampaan ruang abadi", image: "/artworks/room4-1.png" },
+      { id: "4-2", title: "Tabir Nurani di Balik Kelopak", year: "2022", desc: "Representasi paradoks antara tabir dan pencerahan, mengeksplorasi tatapan mata sebagai jendela jiwa yang mencari kehangatan transendental di balik keheningan diri", image: "/artworks/room4-2.png" },
+      { id: "4-3", title: "Dialektika Mitologis: Sura dan Baya", year: "2026", desc: "Batik gaya paisley simbol dari Surabaya refleksi dualisme kosmis dan dialektika mitologis, membingkai konflik abadi antara naluri dan takdir yang terajut harmonis dalam ornamen kehidupan.", image: "/artworks/room4-3.jpeg" },
+      { id: "4-4", title: "Terindah yang Terlepas", year: "2024", desc: "Sosok yang pernah membawa rasa jatuh cinta sejatuh-jatuhnya, pada akhirnya menuntun jiwa menuju puncak tertinggi mencintai yaitu ketulusan untuk mengikhlaskan. Kehadiran bunga menegaskan bahwa cinta sejati tidak pernah benar-benar lenyap, melainkan bertransformasi menjadi kenangan abadi di batas cakrawala", image: "/artworks/room4-4.png" },
+      { id: "4-5", title: "Es krim 🤤", year: "2026", desc: "Es krim yang mencair mengajarkan bahwa kebahagiaan hidup tak bisa digenggam selamanya, melainkan harus dinikmati seutuhnya sebelum sirna oleh sang waktu", image: "/artworks/room4-5.jpg" },
     ],
   },
   {
@@ -54,21 +53,22 @@ const rooms: Room[] = [
   },
   {
     id: 4,
-    title: "Ruangan Digital Art",
+    title: "Ruangan Tradisional x Digital Art",
     artworks: [
-      { id: "4-1", title: "Menari di Antara Sunyi Semesta", year: "2024", desc: "Manifestasi pemberontakan eksistensial, di mana batas gravitasi dan realitas kosmik diterobos melalui kebebasan bermain (homo ludens) di tengah kehampaan ruang abadi", image: "/artworks/room4-1.png" },
-      { id: "4-2", title: "Tabir Nurani di Balik Kelopak", year: "2022", desc: "Representasi paradoks antara tabir dan pencerahan, mengeksplorasi tatapan mata sebagai jendela jiwa yang mencari kehangatan transendental di balik keheningan diri", image: "/artworks/room4-2.png" },
-      { id: "4-3", title: "Dialektika Mitologis: Sura dan Baya", year: "2026", desc: "Batik gaya paisley simbol dari Surabaya refleksi dualisme kosmis dan dialektika mitologis, membingkai konflik abadi antara naluri dan takdir yang terajut harmonis dalam ornamen kehidupan.", image: "/artworks/room4-3.jpeg" },
-      { id: "4-4", title: "Terindah yang Terlepas", year: "2024", desc: "Sosok yang pernah membawa rasa jatuh cinta sejatuh-jatuhnya, pada akhirnya menuntun jiwa menuju puncak tertinggi mencintai yaitu ketulusan untuk mengikhlaskan. Kehadiran bunga menegaskan bahwa cinta sejati tidak pernah benar-benar lenyap, melainkan bertransformasi menjadi kenangan abadi di batas cakrawala", image: "/artworks/room4-4.png" },
-      { id: "4-5", title: "Es krim 🤤", year: "2026", desc: "Es krim yang mencair mengajarkan bahwa kebahagiaan hidup tak bisa digenggam selamanya, melainkan harus dinikmati seutuhnya sebelum sirna oleh sang waktu", image: "/artworks/room4-5.jpg" },
+      { id: "2-1", title: "Bara Ego di Kedalaman Hampa", year: "2021", desc: "Estetika kehampaan eksistensial Izana, di mana sketsa monokrom melambangkan isolasi dingin dari realitasnya yang terluka. Pendar neon pada mata dan anting-anting menjadi manifestasi will to power, menegaskan bara ambisi seorang raja yang menolak padam di tengah kegelapan takdirnya", image: "/artworks/room2-1.png" },
+      { id: "2-2", title: "Mekar Menantang Sunyi Monokrom", year: "2026", desc: "Eksplorasi esensi mentah dari alam (mimesis organik), membuktikan bahwa kekuatan artistik sejati lahir dari tarikan garis sederhana yang menangkap ritme pertumbuhan hidup", image: "/artworks/room2-2.jpg" },
+      { id: "2-3", title: "Pendar Lirih Sang Jiwa", year: "2025", desc: "Elegi visual tentang kerapuhan dan keanggunan, menampilkan pendar lembut pada kelopak sebagai metafora jiwa yang tetap memancarkan cinta di tengah kesunyian eksistensial", image: "/artworks/room2-3.jpg" },
+      { id: "2-4", title: "Obsesi Sang Iblis", year: "2022", desc: "Enam mata yang menatap nanar merangkum ironi keputusasaan abadi demi mengejar puncak kesempurnaan yang semu. Sorotnya mencerminkan keterbelengguan jiwa dalam rasa iri dan harga diri, menjadikannya monumen keabadian yang sunyi dari kemanusiaan yang hilang", image: "/artworks/room2-4.png" },
     ],
   },
   {
     id: 5,
-    title: "Ruangan persembahan Karya Terbaik",
+    title: "Ruangan Foto x Digital Art",
     artworks: [
-      { id: "5-1", title: "Oline Manuel", year: "Forever", desc: "Karena aku mencintaimu dan hatiku hanya untukmu, Tak akan menyerah dan takkan berhenti mencintaimu, Ku berjuang dalam hidupku, Untuk selalu memilikimu, Seumur hidupku, setulus hatiku Hanya untukmu", image: "/artworks/room5-1.jpg" },
-      { id: "5-2", title: "Harusnya", year: "padakno", desc: "Apakah ada kemungkinan dia sadar dok?", image: "/artworks/room5-2.jpg" },
+      { id: "1-1", title: "Metamorfosis Realitas Ruang Jiwa", year: "2026", desc: "Dekonstruksi realitas urban yang monoton melalui intervensi imajinasi surealis, mengubah ruang publik yang kaku menjadi panggung absurditas yang membebaskan", image: "/artworks/room1-1.jpg" },
+      { id: "1-2", title: "Kepolosan Masa Fana", year: "2022", desc: "Simbolisasi perjalanan eksistensi manusia yang fana, di mana kepolosan masa kecil dijadikan kompas navigasi melintasi lanskap kedewasaan yang datar", image: "/artworks/room1-2.png" },
+      { id: "1-3", title: "Ratap Malam Meniti Pijar Harap", year: "2022", desc: "Bunga Violet menandakan meditasi visual tentang harapan (hope) di tengah malam metafisik, mempertemukan kefanaan alam materiil dengan kerinduan abadi pada cahaya ilahi", image: "/artworks/room1-3.png" },
+      { id: "1-4", title: "Lembayung Samudra Niskala", year: "2022", desc: "Perwujudan puitika mimpi (oneiric poetics), mengaburkan batas antara kedalaman samudra batin dan cakrawala senja untuk menyentuh sublime spiritual", image: "/artworks/room1-4.png" },
     ],
   },
 ];
