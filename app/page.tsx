@@ -39,7 +39,7 @@ const rooms: Room[] = [
       { id: "4-2", title: "Tabir Nurani di Balik Kelopak", year: "2022", desc: "Representasi paradoks antara tabir dan pencerahan, mengeksplorasi tatapan mata sebagai jendela jiwa yang mencari kehangatan transendental di balik keheningan diri", image: "/artworks/room4-2.png" },
       { id: "4-3", title: "Dialektika Mitologis: Sura dan Baya", year: "2026", desc: "Batik gaya paisley simbol dari Surabaya refleksi dualisme kosmis dan dialektika mitologis, membingkai konflik abadi antara naluri dan takdir yang terajut harmonis dalam ornamen kehidupan.", image: "/artworks/room4-3.jpeg" },
       { id: "4-4", title: "Terindah yang Terlepas", year: "2024", desc: "Sosok yang pernah membawa rasa jatuh cinta sejatuh-jatuhnya, pada akhirnya menuntun jiwa menuju puncak tertinggi mencintai yaitu ketulusan untuk mengikhlaskan. Kehadiran bunga menegaskan bahwa cinta sejati tidak pernah benar-benar lenyap, melainkan bertransformasi menjadi kenangan abadi di batas cakrawala", image: "/artworks/room4-4.png" },
-      { id: "4-5", title: "Es krim 🤤", year: "2026", desc: "Es krim yang mencair mengajarkan bahwa kebahagiaan hidup tak bisa digenggam selamanya, melainkan harus dinikmati seutuhnya sebelum sirna oleh sang waktu", image: "/artworks/room4-5.jpg" },
+      { id: "4-5", title: "Es cream", year: "2026", desc: "Es krim yang mencair mengajarkan bahwa kebahagiaan hidup tak bisa digenggam selamanya, melainkan harus dinikmati seutuhnya sebelum sirna oleh sang waktu", image: "/artworks/room4-5.jpg" },
     ],
   },
   {
