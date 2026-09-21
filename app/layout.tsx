@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Virtual Gallery Fauzan | Artspace 3D",
     description: "Jelajahi pameran karya seni virtual 3D interaktif berbasis WebGL.",
-    images: ["/artworks/room1-1.jpg"],
+    images: ["https://virtual-gallery-fauzan.hostifame.id/artworks/room1-1.jpg"],
   },
 };
 export default function RootLayout({ children }: LayoutProps<"/">) {
